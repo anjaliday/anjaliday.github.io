@@ -12,10 +12,11 @@
       height: 100vh;
     }
     .sidebar {
-      width: 220px;
+      width: 250px;
       background-color: #1f2937;
       color: white;
       padding: 20px;
+      overflow-y: auto;
     }
     .sidebar h2 {
       margin-bottom: 20px;
@@ -28,9 +29,17 @@
       margin: 10px 0;
       padding: 8px 12px;
       border-radius: 8px;
+      cursor: pointer;
     }
     .sidebar a:hover {
       background-color: #374151;
+    }
+    .sub-tabs {
+      margin-left: 10px;
+    }
+    .sub-tabs a {
+      font-size: 14px;
+      margin: 5px 0;
     }
     .content {
       flex: 1;
@@ -48,10 +57,15 @@
 
   <div class="sidebar">
     <h2>Anjali’s Internship</h2>
-    <a href="#" onclick="showTab('tab1')">Project Overview</a>
-    <a href="#" onclick="showTab('tab2')">Python & APIs</a>
-    <a href="#" onclick="showTab('tab3')">Containers & Kubernetes</a>
-    <a href="#" onclick="showTab('tab4')">Reflections</a>
+    <a onclick="showTab('tab1')">Project Overview</a>
+    <a onclick="showTab('tab2')">Python & APIs</a>
+    <a onclick="toggleSubTabs()">Internship Work ▼</a>
+    <div id="subTabs" class="sub-tabs" style="display: none;">
+      <a onclick="showTab('tab3')">Containerization with Kubernetes</a>
+      <a onclick="showTab('tab4')">Prospecting with Goldmine</a>
+      <a onclick="showTab('tab5')">Technical Demos</a>
+    </div>
+    <a onclick="showTab('tab6')">Reflections</a>
   </div>
 
   <div class="content">
@@ -64,10 +78,18 @@
       <p>Details about writing Python scripts, REST APIs, and sending requests.</p>
     </div>
     <div id="tab3" class="tab-content">
-      <h1>Containers & Kubernetes</h1>
-      <p>Notes on Dockerizing the app and deploying it with Kubernetes.</p>
+      <h1>Containerization with Kubernetes</h1>
+      <p>Info on containerizing the Flask app and deploying it with Kubernetes.</p>
     </div>
     <div id="tab4" class="tab-content">
+      <h1>Prospecting with Goldmine</h1>
+      <p>Notes on learning and supporting the Goldmine prospecting tool.</p>
+    </div>
+    <div id="tab5" class="tab-content">
+      <h1>Technical Demos</h1>
+      <p>Details on the Maximo Visual Inspection demo and presenting it to the team.</p>
+    </div>
+    <div id="tab6" class="tab-content">
       <h1>Reflections</h1>
       <p>Takeaways, what I learned, and personal reflections on the internship experience.</p>
     </div>
@@ -78,6 +100,11 @@
       const tabs = document.querySelectorAll('.tab-content');
       tabs.forEach(tab => tab.classList.remove('active'));
       document.getElementById(tabId).classList.add('active');
+    }
+
+    function toggleSubTabs() {
+      const subTabs = document.getElementById('subTabs');
+      subTabs.style.display = subTabs.style.display === 'none' ? 'block' : 'none';
     }
   </script>
 

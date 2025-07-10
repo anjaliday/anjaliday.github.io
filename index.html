@@ -75,10 +75,10 @@
       <p><strong>Steps for building an app to run with containers and Kubernetes:</strong></p>
 
       <p>1. Install any code editor of your choice (I used VS Code).</p>
-      <img src="" alt="VS Code Screenshot">
+      <img src="images/vscode.png" alt="VS Code Screenshot">
 
       <p>2. Install Python for your machine.</p>
-      <img src="" alt="Python Install Screenshot">
+      <img src="images/python.png" alt="Python Install Screenshot">
 
       <p>3. Optional: Connect Python manually to your path.</p>
       <pre>
@@ -88,7 +88,7 @@ export PATH="/Library/Frameworks/Python.framework/Versions/3.13/bin:$PATH"
 Then run this: source ~/.zprofile  
 Now run: python --version  
       </pre>
-      <img src="" alt="Python Version Terminal Screenshot">
+      <img src="images/zprofile.png" alt="Python Version Terminal Screenshot">
 
       <p>4. Create a simple <code>helloworld.py</code> Python script to test it prints to terminal.</p>
 
@@ -96,11 +96,11 @@ Now run: python --version
       <pre>pip install Flask</pre>
 
       <p>6. Create <code>app.py</code> and insert the code:</p>
-      <img src="" alt="Flask App Code Screenshot">
+      <img src="images/appy.png" alt="Flask App Code Screenshot">
 
       <p>7. Run the app:</p>
       <pre>python3 app.py</pre>
-      <img src="" alt="Terminal Running App Screenshot">
+      <img src="images/localhost.png" alt="Terminal Running App Screenshot">
 
       <p>8. Open your browser and go to: <code>http://localhost:3001/app</code></p>
       <img src="" alt="Browser Showing Hello World Screenshot">
@@ -110,14 +110,14 @@ Now run: python --version
       <h2>Now it's time to start working with containers:</h2>
 
       <p>1. Install Podman on your desktop (download it from the official site).</p>
-      <img src="" alt="Podman Install Screenshot">
+      <img src="images/podman.png" alt="Podman Install Screenshot">
 
       <p>2. Open your terminal and run:</p>
       <pre>podman</pre>
-      <img src="" alt="Podman Command Output Screenshot">
+      <img src="images/podmanlist.png" alt="Podman Command Output Screenshot">
 
       <p>3. Create a <code>requirements.txt</code> file and add dependencies (example: flask)</p>
-      <img src="" alt="Requirements File Screenshot">
+      <img src="images/flask.png" alt="Requirements File Screenshot">
 
       <p>4. Create a <code>Dockerfile</code> with the following contents:</p>
       <img src="" alt="Dockerfile Screenshot">
@@ -137,7 +137,7 @@ podman build -t &lt;your_folder_name&gt; .
 
       <p>7. Start your container:</p>
       <pre>podman run -it -p 3001:3000 --name anjali2 anjali_hw</pre>
-      <img src="" alt="Running Container Screenshot">
+      <img src="images/podmanrun.png" alt="Running Container Screenshot">
 
       <p>You should now see the local host pop up and your app running inside the container!</p>
 

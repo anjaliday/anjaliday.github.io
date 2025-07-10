@@ -12,38 +12,33 @@
       height: 100vh;
     }
     .sidebar {
-      width: 250px;
+      width: 220px;
       background-color: #1f2937;
       color: white;
       padding: 20px;
-      overflow-y: auto;
     }
     .sidebar h2 {
-      margin-bottom: 20px;
       font-size: 20px;
+      margin-bottom: 15px;
+    }
+    .sidebar .submenu {
+      margin-left: 10px;
     }
     .sidebar a {
       display: block;
       color: white;
       text-decoration: none;
       margin: 10px 0;
-      padding: 8px 12px;
-      border-radius: 8px;
-      cursor: pointer;
+      padding: 6px 12px;
+      border-radius: 6px;
     }
     .sidebar a:hover {
       background-color: #374151;
     }
-    .sub-tabs {
-      margin-left: 10px;
-    }
-    .sub-tabs a {
-      font-size: 14px;
-      margin: 5px 0;
-    }
     .content {
       flex: 1;
       padding: 30px;
+      overflow-y: scroll;
     }
     .tab-content {
       display: none;
@@ -51,47 +46,113 @@
     .tab-content.active {
       display: block;
     }
+    img {
+      max-width: 100%;
+      margin: 20px 0;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+    }
+    h1, h2 {
+      margin-top: 0;
+    }
   </style>
 </head>
 <body>
 
   <div class="sidebar">
-    <h2>Anjali’s Internship</h2>
-    <a onclick="showTab('tab1')">Project Overview</a>
-    <a onclick="showTab('tab2')">Python & APIs</a>
-    <a onclick="toggleSubTabs()">Internship Work ▼</a>
-    <div id="subTabs" class="sub-tabs" style="display: none;">
-      <a onclick="showTab('tab3')">Containerization with Kubernetes</a>
-      <a onclick="showTab('tab4')">Prospecting with Goldmine</a>
-      <a onclick="showTab('tab5')">Technical Demos</a>
+    <h2>Internship Work</h2>
+    <div class="submenu">
+      <a href="#" onclick="showTab('tab1')">Containerization with Kubernetes</a>
+      <a href="#" onclick="showTab('tab2')">Prospecting with Goldmine</a>
+      <a href="#" onclick="showTab('tab3')">Technical Demos</a>
     </div>
-    <a onclick="showTab('tab6')">Reflections</a>
   </div>
 
   <div class="content">
     <div id="tab1" class="tab-content active">
-      <h1>Project Overview</h1>
-      <p>This section will describe the main goals and purpose of the internship project.</p>
+      <h1>Start from Scratch: Build an App, Containerize it, Deploy with Kubernetes</h1>
+
+      <p><strong>Steps for building an app to run with containers and Kubernetes:</strong></p>
+
+      <p>1. Install any code editor of your choice (I used VS Code).</p>
+      <img src="" alt="VS Code Screenshot">
+
+      <p>2. Install Python for your machine.</p>
+      <img src="" alt="Python Install Screenshot">
+
+      <p>3. Optional: Connect Python manually to your path.</p>
+      <pre>
+Run this in terminal: open -e ~/.zprofile  
+Paste this in the file that opens:  
+export PATH="/Library/Frameworks/Python.framework/Versions/3.13/bin:$PATH"  
+Then run this: source ~/.zprofile  
+Now run: python --version  
+      </pre>
+      <img src="" alt="Python Version Terminal Screenshot">
+
+      <p>4. Create a simple <code>helloworld.py</code> Python script to test it prints to terminal.</p>
+
+      <p>5. Install Flask to help with the API:</p>
+      <pre>pip install Flask</pre>
+
+      <p>6. Create <code>app.py</code> and insert the code:</p>
+      <img src="" alt="Flask App Code Screenshot">
+
+      <p>7. Run the app:</p>
+      <pre>python3 app.py</pre>
+      <img src="" alt="Terminal Running App Screenshot">
+
+      <p>8. Open your browser and go to: <code>http://localhost:3001/app</code></p>
+      <img src="" alt="Browser Showing Hello World Screenshot">
+
+      <p>You can update the route or port number in your code if needed.</p>
+
+      <h2>Now it's time to start working with containers:</h2>
+
+      <p>1. Install Podman on your desktop (download it from the official site).</p>
+      <img src="" alt="Podman Install Screenshot">
+
+      <p>2. Open your terminal and run:</p>
+      <pre>podman</pre>
+      <img src="" alt="Podman Command Output Screenshot">
+
+      <p>3. Create a <code>requirements.txt</code> file and add dependencies (example: flask)</p>
+      <img src="" alt="Requirements File Screenshot">
+
+      <p>4. Create a <code>Dockerfile</code> with the following contents:</p>
+      <img src="" alt="Dockerfile Screenshot">
+
+      <p>5. Run the container:</p>
+      <pre>
+podman machine init  
+podman machine start  
+podman build -t &lt;your_folder_name&gt; .
+      </pre>
+
+      <p>If you get a pull limit error, try again or create a Docker Hub account.</p>
+      <p>If you get a COPY error, make sure you're referencing the right folders/files in your Dockerfile.</p>
+
+      <p>6. Run this to check if your image built successfully:</p>
+      <pre>podman images</pre>
+
+      <p>7. Start your container:</p>
+      <pre>podman run -it -p 3001:3000 --name anjali2 anjali_hw</pre>
+      <img src="" alt="Running Container Screenshot">
+
+      <p>You should now see the local host pop up and your app running inside the container!</p>
+
+      <h2>Next Step: Kubernetes</h2>
+      <p>Coming soon…</p>
     </div>
+
     <div id="tab2" class="tab-content">
-      <h1>Python & APIs</h1>
-      <p>Details about writing Python scripts, REST APIs, and sending requests.</p>
-    </div>
-    <div id="tab3" class="tab-content">
-      <h1>Containerization with Kubernetes</h1>
-      <p>Info on containerizing the Flask app and deploying it with Kubernetes.</p>
-    </div>
-    <div id="tab4" class="tab-content">
       <h1>Prospecting with Goldmine</h1>
-      <p>Notes on learning and supporting the Goldmine prospecting tool.</p>
+      <p>Details about your work with the Goldmine tool can go here.</p>
     </div>
-    <div id="tab5" class="tab-content">
+
+    <div id="tab3" class="tab-content">
       <h1>Technical Demos</h1>
-      <p>Details on the Maximo Visual Inspection demo and presenting it to the team.</p>
-    </div>
-    <div id="tab6" class="tab-content">
-      <h1>Reflections</h1>
-      <p>Takeaways, what I learned, and personal reflections on the internship experience.</p>
+      <p>Notes on demos you've presented, technologies used, and feedback.</p>
     </div>
   </div>
 
@@ -100,11 +161,6 @@
       const tabs = document.querySelectorAll('.tab-content');
       tabs.forEach(tab => tab.classList.remove('active'));
       document.getElementById(tabId).classList.add('active');
-    }
-
-    function toggleSubTabs() {
-      const subTabs = document.getElementById('subTabs');
-      subTabs.style.display = subTabs.style.display === 'none' ? 'block' : 'none';
     }
   </script>
 
